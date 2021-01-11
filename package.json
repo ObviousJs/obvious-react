@@ -1,0 +1,43 @@
+{
+  "name": "react-obvious",
+  "version": "1.0.0",
+  "description": "a react libary to manage socket of obvious.js ",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --coverage"
+  },
+  "author": "Philip Lau",
+  "license": "MIT",
+  "devDependencies": {
+    "@runnan/obvious": "^1.0.4",
+    "@types/enzyme": "^3.10.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.23",
+    "@types/react": "^16.9.17",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "jest": "^24.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SMIELPF/react-obvious.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SMIELPF/react-obvious/issues"
+  },
+  "homepage": "https://github.com/SMIELPF/react-obvious#readme"
+}
