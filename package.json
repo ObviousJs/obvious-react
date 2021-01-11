@@ -10,7 +10,7 @@
   "author": "Philip Lau",
   "license": "MIT",
   "devDependencies": {
-    "@runnan/obvious": "^1.0.4",
+    "obvious-core": "^0.2.2",
     "@types/enzyme": "^3.10.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.23",
