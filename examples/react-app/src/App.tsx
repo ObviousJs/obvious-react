@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-// import Obvious from '../../../src/index'
+import Obvious from '../../../src/index'
 import './App.css';
 
 console.log(Obvious)

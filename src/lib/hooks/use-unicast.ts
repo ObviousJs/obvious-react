@@ -1,4 +1,4 @@
-import { useSocket } from '../hooks/use-socket';
+import { useSocket } from './use-socket';
 import { useEffect } from 'react';
 import { Socket } from 'obvious-core'; // eslint-disable-line
 import { Errors } from '../utils';

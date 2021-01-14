@@ -17,3 +17,14 @@ export {
     useUnicast,
     useBroadcast
 };
+
+export default {
+    BusProvider,
+    SocketProvider,
+    withObviousState,
+    useObviousState,
+    useBus,
+    useSocket,
+    useUnicast,
+    useBroadcast
+}
