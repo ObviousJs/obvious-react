@@ -38,10 +38,14 @@
     "rollup": "^2.50.4",
     "rollup-plugin-typescript2": "^0.30.0",
     "ts-jest": "^24.2.0",
+    "tslib": "^2.2.0",
     "typescript": "^3.7.2"
   },
-  "dependencies": {
-    "tslib": "^1.10.0"
+  "dependencies": {},
+  "peerDependencies": {
+    "obvious-core": "^0.2.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 import React from 'react';
 import SocketContext from '../context/bus-context';
 import { Socket } from 'obvious-core'; // eslint-disable-line
-import { Errors, formatStates } from '../utils';
+import { Errors, formatStates } from '../utils/index';
 
 export type StateType = Record<string, {
     name: string,

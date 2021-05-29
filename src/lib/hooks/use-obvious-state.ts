@@ -1,7 +1,7 @@
 import { useSocket } from './use-socket';
 import { useState, useEffect } from 'react';
 import { Socket } from 'obvious-core'; // eslint-disable-line
-import { Errors } from '../utils';
+import { Errors } from '../utils/index';
 
 type OptionsType = {
     socket?: Socket,

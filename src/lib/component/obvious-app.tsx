@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBus } from '../hooks/use-bus';
 import { Bus } from 'obvious-core'; // eslint-disable-line
-import { Errors } from '../utils';
+import { Errors } from '../utils/index';
 
 type Props = {
     name: string,
