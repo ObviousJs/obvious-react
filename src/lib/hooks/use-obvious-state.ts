@@ -28,7 +28,7 @@ export function useObviousState<T>(stateName: string, options: OptionsType = {})
         initialValue = socket.getState(stateName);
     } else if (options.initialValue !== undefined) {
         initialValue = options.initialValue;
-        if (stateNameLink.length > 0) {
+        if (stateNameLink.length > 1) {
             throw new Error(Errors.initDeepState(stateName));
         } else {
             socket.initState(rootState, initialValue);

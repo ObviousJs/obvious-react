@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useBroadcast, useObviousState, useSocket, useUnicast } from './obvious-react';
+import { useBroadcast, useObviousState, useSocket, useUnicast } from 'obvious-react';
 
 function App() {
   const [logoClass, setLogoClass] = React.useState('App-logo rotate');
   const inputRef = React.useRef(null);
 
   const socket = useSocket();
-  const [text, setText] = useObviousState<string>('text.a.b.c', { initialValue: 'Hello Obvious' });
+  const [text, setText] = useObviousState<string>('text', { initialValue: 'Hello Obvious' });
   useBroadcast('change-rotate', (rotate: boolean) => {
     if (rotate) {
       setLogoClass('App-logo rotate');
