@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { SocketProvider } from 'obvious-react';
+import { BusProvider, SocketProvider } from 'obvious-react';
 import reportWebVitals from './reportWebVitals';
 
 const bus = window.__Bus__.host;
@@ -34,13 +34,13 @@ class ErrorBoundry extends React.Component<any, any> {
 bus.createApp('react-app')
   .bootstrap(async (config) => {
     ReactDOM.render(
-      <React.StrictMode>
-        <ErrorBoundry>
+      <ErrorBoundry>
+        <BusProvider bus={bus}>
           <SocketProvider socket={socket}>
             <App />
           </SocketProvider>
-        </ErrorBoundry>
-      </React.StrictMode>,
+        </BusProvider>
+      </ErrorBoundry>,
       config.mountPoint
     );
   })

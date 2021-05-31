@@ -1,10 +1,9 @@
 <template>
   <div class="app-container">
-    <obvious-app v-if="showReactApp" name="react-app" />
     <div id="app">
       <img alt="Vue logo" src="./assets/logo.png">
       <div :style="{display: 'flex', justifyContent: 'center'}">
-        <button class="button" v-if="!showReactApp" @click="showReactApp = true">Show React App</button>
+        <button class="button" @click="isVueAppVisible = false">Hide Vue App</button>
       </div>
       <HelloWorld :msg="text"/>
     </div>
@@ -21,33 +20,20 @@ export default {
     HelloWorld
   },
 
-  data() {
-    return {
-      showReactApp: true
-    }
-  },
-
   obviousData: {
-    text: 'text'
+    text: 'text',
+    isVueAppVisible: 'isVueAppVisible'
   },
 
-  watch: {
-    user(value) {
-      this.$emit('userChanged')
-    }
-  },
 
-  broadcast: {
-    setReactAreaVisible(visible) {
-      this.showReactApp = visible
-    }
+  beforeDestroy() {
+    console.log('destroyed')
+    // const broadcastEvents = window.__Bus__.host.eventEmitter.broadcastEvents['$state-isVueAppVisible-change'];
+    // console.log('destroyed', this.$obStateWatcher);
+    //console.log(broadcastEvents[1] === this.$obStateWatcher.isVueAppVisible.handler);
+    // console.log(this.$obStateWatcher.isVueAppVisible.handler);
+    // console.log(broadcastEvents.includes(this.$obStateWatcher.isVueAppVisible.handler));
   },
-
-  methods: {
-    changeText: function(text){
-      this.text = text;
-    }
-  }
 }
 </script>
 

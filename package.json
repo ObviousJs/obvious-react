@@ -1,6 +1,6 @@
 {
-  "name": "react-obvious",
-  "version": "1.0.0",
+  "name": "obvious-react",
+  "version": "0.1.0",
   "description": "a react libary to manage socket of obvious.js ",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -10,7 +10,7 @@
     "test": "jest --coverage",
     "lint": "eslint --fix --ext .js,.vue src",
     "demo:install": "cd ./examples/react-app && npm install && cd ../vue-app && npm install && cd ../host-enviroment && npm install",
-    "demo:react": "npm run build && cd ./examples/react-app && npm run start",
+    "demo:react": "cd ./examples/react-app && npm run start",
     "demo:vue": "cd ./examples/vue-app && npm run serve",
     "demo:host": "cd ./examples/host-enviroment && npm start"
   },
@@ -33,7 +33,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "jest": "^24.9.0",
-    "obvious-core": "^0.2.3",
+    "obvious-core": "^0.2.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "rollup": "^2.50.4",

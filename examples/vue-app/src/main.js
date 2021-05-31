@@ -9,11 +9,16 @@ const $socket = $bus.createSocket();
 
 Vue.use(ObviousVue)
 
+let app = null
+
 $bus.createApp('vue-app')
   .bootstrap(async (config) => {
-    new Vue({
+    app = new Vue({
       render: h => h(App),
       $bus,
       $socket
-    }).$mount(config.mountPoint);
+    }).$mount(config.mountPoint)
+  })
+  .destroy(async (config) => {
+    app.$destroy()
   });

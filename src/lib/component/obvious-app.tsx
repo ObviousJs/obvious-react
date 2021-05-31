@@ -10,27 +10,56 @@ type Props = {
     destroyConifg?: Record<string, any>,
     onActivate?: (name: string) => any,
     onDestroy?: (name: string) => any,
+    style?: React.CSSProperties,
+    className?: string
 }
 
-export const ObviousApp: React.FunctionComponent<Props> = (props) => {
+const InnerObviousApp: React.RefForwardingComponent<any, Props> = (props, ref) => {
     const defaultBus = useBus();
-    const { bus = defaultBus, name, activateConfig = {}, destroyConifg = {}, onActivate, onDestroy } = props;
+    const { 
+        bus = defaultBus, 
+        name, 
+        activateConfig = {}, 
+        destroyConifg = {}, 
+        className = '', 
+        style = {}, 
+        onActivate, 
+        onDestroy 
+    } = props;
     if (!bus) {
         throw new Error(Errors.busIsRequired());
     }
-    const ref = React.useRef(null);
-    React.useEffect(() => {
-        const mountPoint = ref.current;
+    const vueAppRef = React.useRef(null);
+    const activateApp = React.useCallback(() => {
+        const mountPoint = vueAppRef.current;
         bus.activateApp(name, { ...activateConfig, mountPoint }).then(() => {
             onActivate && onActivate(name);
         });
+    }, [name, bus]);
+    const destroyApp = React.useCallback(() => {
+        const mountPoint = vueAppRef.current;
+        bus.destroyApp(name, { ...destroyConifg, mountPoint }).then(() => {
+            onDestroy && onDestroy(name);
+        });
+    }, [name, bus]);
+
+    React.useImperativeHandle(ref, () => ({
+        activateApp,
+        destroyApp
+    }), [bus]);
+
+    React.useEffect(() => {
+        activateApp();
         return () => {
-            bus.destroyApp(name, { ...destroyConifg, mountPoint }).then(() => {
-                onDestroy && onDestroy(name);
-            });
+            destroyApp();
         };
-    }, [name, bus, activateConfig, destroyConifg, onActivate, onDestroy]);
+    }, [activateApp, destroyApp]);
+
     return (
-        <div ref={ref}></div>
+        <div className={className} style={style}>
+            <div ref={vueAppRef}></div>
+        </div>
     );
 };
+
+export const ObviousApp = React.forwardRef(InnerObviousApp);

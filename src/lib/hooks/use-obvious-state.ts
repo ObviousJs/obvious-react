@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { Socket } from 'obvious-core'; // eslint-disable-line
 import { Errors, getStateNameLink } from '../utils/index';
 
-type OptionsType = {
+type OptionsType<T> = {
     socket?: Socket,
-    initialValue?: any
+    initialValue?: T
 }
 
 /**
@@ -14,7 +14,7 @@ type OptionsType = {
  * @param {OptionsType} options the option to indicate socket and the state value to init
  * @return {[any, Function]} [value, setValue] corresponding to the value of obvious' state and the method to set the value
  */
-export function useObviousState<T>(stateName: string, options: OptionsType = {}): [T, (newValue: T | ((oldValue: T) => T)) => void] {
+export function useObviousState<T>(stateName: string, options: OptionsType<T> = {}): [T, (newValue: T | ((oldValue: T) => T)) => void] {
     const stateNameLink = getStateNameLink(stateName)
     const rootState: string = stateNameLink[0] as string;
     const defaultSocket = useSocket();

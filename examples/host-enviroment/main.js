@@ -16,4 +16,4 @@ const bus = createBus('host', {
     }
 });
 
-bus.activateApp('vue-app', { mountPoint: document.getElementById('vue-app') });
+bus.activateApp('react-app', { mountPoint: document.getElementById('react-app') });
