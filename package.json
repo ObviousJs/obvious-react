@@ -32,7 +32,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "jest": "^24.9.0",
-    "obvious-core": "^0.2.2",
+    "obvious-core": "^0.2.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "rollup": "^2.50.4",
@@ -43,7 +43,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "obvious-core": "^0.2.2",
+    "obvious-core": "^0.2.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },

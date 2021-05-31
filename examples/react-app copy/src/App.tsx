@@ -1,42 +1,27 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-const bus = window.__Bus__.host;
-const socket = bus.createSocket();
+import { useBroadcast, useObviousState, useSocket, useUnicast } from './obvious-react';
 
 function App() {
-  const [text, setText] = React.useState('Hello Obvious');
   const [logoClass, setLogoClass] = React.useState('App-logo rotate');
   const inputRef = React.useRef(null);
 
-  React.useEffect(() => {
-    if (socket.getState('text') === undefined) {
-      socket.initState('text', 'Hello Obvious');
+  const socket = useSocket();
+  const [text, setText] = useObviousState<string>('text.a.b.c', { initialValue: 'Hello Obvious' });
+  useBroadcast('change-rotate', (rotate: boolean) => {
+    if (rotate) {
+      setLogoClass('App-logo rotate');
     } else {
-      socket.setState('text', 'Hello Obvious');
+      setLogoClass('App-logo');
     }
-    const changeRotate = (rotate) => {
-      if (rotate) {
-        setLogoClass('App-logo rotate');
-      } else {
-        setLogoClass('App-logo');
-      }
-    };
-    const getInputDom = () => {
-      return inputRef && inputRef.current;
-    };
-    socket.onBroadcast('change-rotate', changeRotate);
-    socket.onUnicast('get-input-dom', getInputDom);
-    return () => {
-      socket.offBroadcast('change-rotate', changeRotate);
-      socket.offUnicast('get-input-dom', getInputDom);
-    };
-  }, []);
+  });
+  useUnicast('get-input-dom', () => {
+    return inputRef && inputRef.current;
+  });
 
-  const handleOnChange = (e) => {
+  const handleOnChange: React.EventHandler<any> = (e) => {
     setText(e.target.value);
-    socket.setState('text', e.target.value);
   }
 
   const handleOnHide = () => {
